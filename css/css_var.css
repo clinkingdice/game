@@ -1,0 +1,192 @@
+:root {
+  --z_index_important: 6000;
+  --z_index_ui: 1000;
+  --z_index_ui_window: 1200;
+}
+:root {
+  --img_橫線: url(../images/ui_background/noise_line.png);
+  --img_六角: url(../images/ui_background/hexagon.png);
+  --img_創角背景: url(./images/ui_background/create_role.png);
+}
+:root {
+  --font_normal: normal normal 16px/1.2 normal;
+  --font_window_title: normal bold 18px/1.2 normal;
+  --font_btn: normal bold 16px/1.2 normal;
+}
+:root {
+  --path_六角: polygon(50% 0, 93.3% 25%, 93.3% 75%, 50% 100%, 6.7% 75%, 6.7% 25%);
+  --path_叉叉: polygon(0 0, 10% 0, 50% 40%, 90% 0, 100% 0, 100% 10%, 60% 50%, 100% 90%, 100% 100%, 90% 100%, 50% 60%, 10% 100%, 0 100%, 0 90%, 40% 50%, 0 10%);
+  --path_右箭頭: polygon(0 0, 1px 0, 6px 5px, 6px 7px, 1px 12px, 0 12px, 0 11px, 5px 6px, 0 1px);
+  --path_打勾_細: polygon(90% 0, 96% 4%, 38% 100%, 32% 100%, 0 70%, 5% 64%, 34% 93%);
+  --path_打勾: polygon(88% 0, 100% 7%, 40% 100%, 26% 100%, 0 70%, 10% 62%, 33% 86%);
+  --bg_加減_豎: linear-gradient(0, currentColor, currentColor) no-repeat center / 2px 16px;
+  --bg_加減_橫: linear-gradient(0, currentColor, currentColor) no-repeat center / 16px 2px;
+}
+:root {
+  --bg_dusk_color1: #ffffbb;
+  --bg_dusk_color2: #ffdc97;
+  --bg_dusk_color3: #fdbe88;
+  --bg_dusk_color4: #f08d75;
+  --bg_dusk_color5: #c37574;
+  --bg_dusk: linear-gradient(0deg,
+    var(--bg_dusk_color1) 19%, var(--bg_dusk_color2) 19%,
+    var(--bg_dusk_color2) 20%, var(--bg_dusk_color1) 20%,
+    var(--bg_dusk_color1) 21%, var(--bg_dusk_color2) 21%,
+    var(--bg_dusk_color2) 39%, var(--bg_dusk_color3) 39%,
+    var(--bg_dusk_color3) 40%, var(--bg_dusk_color2) 40%,
+    var(--bg_dusk_color2) 41%, var(--bg_dusk_color3) 41%,
+    var(--bg_dusk_color3) 59%, var(--bg_dusk_color4) 59%,
+    var(--bg_dusk_color4) 60%, var(--bg_dusk_color3) 60%,
+    var(--bg_dusk_color3) 61%, var(--bg_dusk_color4) 61%,
+    var(--bg_dusk_color4) 79%, var(--bg_dusk_color5) 79%,
+    var(--bg_dusk_color5) 80%, var(--bg_dusk_color4) 80%,
+    var(--bg_dusk_color4) 81%, var(--bg_dusk_color5) 81%);
+
+  --bg_cool_cloud_color1: #d0d0f3;
+  --bg_cool_cloud_color2: #e4e4f3;
+  --bg_cool_cloud_color3: #f6f6f6;
+  --bg_cool_cloud_color4: #ffffe8;
+  --bg_cool_cloud: linear-gradient(0deg,
+    var(--bg_cool_cloud_color1) 24%, var(--bg_cool_cloud_color2) 24%,
+    var(--bg_cool_cloud_color2) 25%, var(--bg_cool_cloud_color1) 25%,
+    var(--bg_cool_cloud_color1) 26%, var(--bg_cool_cloud_color2) 26%,
+    var(--bg_cool_cloud_color2) 49%, var(--bg_cool_cloud_color3) 49%,
+    var(--bg_cool_cloud_color3) 50%, var(--bg_cool_cloud_color2) 50%,
+    var(--bg_cool_cloud_color2) 51%, var(--bg_cool_cloud_color3) 51%,
+    var(--bg_cool_cloud_color3) 74%, var(--bg_cool_cloud_color4) 74%,
+    var(--bg_cool_cloud_color4) 75%, var(--bg_cool_cloud_color3) 75%,
+    var(--bg_cool_cloud_color3) 76%, var(--bg_cool_cloud_color4) 76%);
+
+  --bg_basalt_color1: #332f2f;
+  --bg_basalt_color2: #4b4444;
+  --bg_basalt_color3: #665a59;
+  --bg_basalt_color4: #877a79;
+  --bg_basalt: linear-gradient(0deg,
+    var(--bg_basalt_color1) 24%, var(--bg_basalt_color2) 24%,
+    var(--bg_basalt_color2) 25%, var(--bg_basalt_color1) 25%,
+    var(--bg_basalt_color1) 26%, var(--bg_basalt_color2) 26%,
+    var(--bg_basalt_color2) 49%, var(--bg_basalt_color3) 49%,
+    var(--bg_basalt_color3) 50%, var(--bg_basalt_color2) 50%,
+    var(--bg_basalt_color2) 51%, var(--bg_basalt_color3) 51%,
+    var(--bg_basalt_color3) 74%, var(--bg_basalt_color4) 74%,
+    var(--bg_basalt_color4) 75%, var(--bg_basalt_color3) 75%,
+    var(--bg_basalt_color3) 76%, var(--bg_basalt_color4) 76%);
+
+  --bg_sunlight_color1: #fff;
+  --bg_sunlight_color2: #f6f6f6;
+  --bg_sunlight_color3: #f0f0f0;
+  --bg_sunlight: linear-gradient(0deg,
+    var(--bg_sunlight_color3) 19%, var(--bg_sunlight_color2) 19%,
+    var(--bg_sunlight_color2) 20%, var(--bg_sunlight_color3) 20%,
+    var(--bg_sunlight_color3) 21%, var(--bg_sunlight_color2) 21%,
+    var(--bg_sunlight_color2) 39%, var(--bg_sunlight_color1) 39%,
+    var(--bg_sunlight_color1) 40%, var(--bg_sunlight_color2) 40%,
+    var(--bg_sunlight_color2) 41%, var(--bg_sunlight_color1) 41%,
+    var(--bg_sunlight_color1) 59%, var(--bg_sunlight_color2) 59%,
+    var(--bg_sunlight_color2) 60%, var(--bg_sunlight_color1) 60%,
+    var(--bg_sunlight_color1) 61%, var(--bg_sunlight_color2) 61%,
+    var(--bg_sunlight_color2) 79%, var(--bg_sunlight_color3) 79%,
+    var(--bg_sunlight_color3) 80%, var(--bg_sunlight_color2) 80%,
+    var(--bg_sunlight_color2) 81%, var(--bg_sunlight_color3) 81%);
+
+  --bg_bud_color1: #acdba0;
+  --bg_bud_color2: #c8eaaf;
+  --bg_bud_color3: #e6f6bf;
+  --bg_bud: linear-gradient(0deg,
+    var(--bg_bud_color1) calc(33% - 2px), var(--bg_bud_color2) calc(33% - 2px),
+    var(--bg_bud_color2) 33%, var(--bg_bud_color1) 33%,
+    var(--bg_bud_color1) calc(33% + 2px), var(--bg_bud_color2) calc(33% + 2px),
+    var(--bg_bud_color2) calc(66% - 2px), var(--bg_bud_color3) calc(66% - 2px),
+    var(--bg_bud_color3) 66%, var(--bg_bud_color2) 66%,
+    var(--bg_bud_color2) calc(66% + 2px), var(--bg_bud_color3) calc(66% + 2px));
+
+  --bg_tile_color1: #4a5d50;
+  --bg_tile_color2: #639057;
+  --bg_tile_color3: #87ae69;
+  --bg_tile_color4: #b0cc85;
+  --bg_tile: linear-gradient(0deg,
+    var(--bg_tile_color1) 24%, var(--bg_tile_color2) 24%,
+    var(--bg_tile_color2) 25%, var(--bg_tile_color1) 25%,
+    var(--bg_tile_color1) 26%, var(--bg_tile_color2) 26%,
+    var(--bg_tile_color2) 49%, var(--bg_tile_color3) 49%,
+    var(--bg_tile_color3) 50%, var(--bg_tile_color2) 50%,
+    var(--bg_tile_color2) 51%, var(--bg_tile_color3) 51%,
+    var(--bg_tile_color3) 74%, var(--bg_tile_color4) 74%,
+    var(--bg_tile_color4) 75%, var(--bg_tile_color3) 75%,
+    var(--bg_tile_color3) 76%, var(--bg_tile_color4) 76%);
+
+  --bg_moss_color1: #b0cc85;
+  --bg_moss_color2: #87ae69;
+  --bg_moss_color3: #639057;
+  --bg_moss: linear-gradient(0deg,
+    var(--bg_moss_color3) 9%, var(--bg_moss_color1) 9%,
+    var(--bg_moss_color1) 10%, var(--bg_moss_color3) 10%,
+    var(--bg_moss_color3) 11%, var(--bg_moss_color1) 11%,
+    var(--bg_moss_color1) 59%, var(--bg_moss_color2) 59%,
+    var(--bg_moss_color2) 60%, var(--bg_moss_color1) 60%,
+    var(--bg_moss_color1) 61%, var(--bg_moss_color2) 61%,
+    var(--bg_moss_color2) 89%, var(--bg_moss_color3) 89%,
+    var(--bg_moss_color3) 90%, var(--bg_moss_color2) 90%,
+    var(--bg_moss_color2) 91%, var(--bg_moss_color3) 91%);
+
+  --bg_river_color1: #98b8e4;
+  --bg_river_color2: #6982ae;
+  --bg_river_color3: #5d5b87;
+  --bg_river: linear-gradient(0deg,
+    var(--bg_river_color3) 9%, var(--bg_river_color1) 9%,
+    var(--bg_river_color1) 10%, var(--bg_river_color3) 10%,
+    var(--bg_river_color3) 11%, var(--bg_river_color1) 11%,
+    var(--bg_river_color1) 59%, var(--bg_river_color2) 59%,
+    var(--bg_river_color2) 60%, var(--bg_river_color1) 60%,
+    var(--bg_river_color1) 61%, var(--bg_river_color2) 61%,
+    var(--bg_river_color2) 89%, var(--bg_river_color3) 89%,
+    var(--bg_river_color3) 90%, var(--bg_river_color2) 90%,
+    var(--bg_river_color2) 91%, var(--bg_river_color3) 91%);
+
+  --bg_gold_color1: #ffdb66;
+  --bg_gold_color2: #e99946;
+  --bg_gold_color3: #b86a3f;
+  --bg_gold: linear-gradient(0deg,
+    var(--bg_gold_color3) 9%, var(--bg_gold_color1) 9%,
+    var(--bg_gold_color1) 10%, var(--bg_gold_color3) 10%,
+    var(--bg_gold_color3) 11%, var(--bg_gold_color1) 11%,
+    var(--bg_gold_color1) 59%, var(--bg_gold_color2) 59%,
+    var(--bg_gold_color2) 60%, var(--bg_gold_color1) 60%,
+    var(--bg_gold_color1) 61%, var(--bg_gold_color2) 61%,
+    var(--bg_gold_color2) 89%, var(--bg_gold_color3) 89%,
+    var(--bg_gold_color3) 90%, var(--bg_gold_color2) 90%,
+    var(--bg_gold_color2) 91%, var(--bg_gold_color3) 91%);
+
+  --bg_small_tile_color1: #87ae69;
+  --bg_small_tile_color2: #b0cc85;
+  --bg_st_line: 40%;
+  --bg_st_line_width: 2px;
+  --bg_small_tile: linear-gradient(0deg,
+    var(--bg_small_tile_color1) calc(var(--bg_st_line) - var(--bg_st_line_width)), var(--bg_small_tile_color2) calc(var(--bg_st_line) - var(--bg_st_line_width)),
+    var(--bg_small_tile_color2) var(--bg_st_line), var(--bg_small_tile_color1) var(--bg_st_line),
+    var(--bg_small_tile_color1) calc(var(--bg_st_line) + var(--bg_st_line_width)), var(--bg_small_tile_color2) calc(var(--bg_st_line) + var(--bg_st_line_width)));
+
+  --bg_snow_color1: #d9dee8;
+  --bg_snow_color2: #f6f6f6;
+  --bg_snow_line: 40%;
+  --bg_snow_line_width: 2px;
+  --bg_snow: linear-gradient(0deg,
+    var(--bg_snow_color1) calc(var(--bg_snow_line) - var(--bg_snow_line_width)), var(--bg_snow_color2) calc(var(--bg_snow_line) - var(--bg_snow_line_width)),
+    var(--bg_snow_color2) var(--bg_snow_line), var(--bg_snow_color1) var(--bg_snow_line),
+    var(--bg_snow_color1) calc(var(--bg_snow_line) + var(--bg_snow_line_width)), var(--bg_snow_color2) calc(var(--bg_snow_line) + var(--bg_snow_line_width)));
+
+  --bg_walnut_wood_color1: #743b48;
+  --bg_walnut_wood_color2: #a74a51;
+  --bg_walnut_wood_color3: #c67259;
+  --bg_walnut_wood_color4: #e3947c;
+  --bg_walnut_wood: linear-gradient(0deg,
+    var(--bg_walnut_wood_color1) 24%, var(--bg_walnut_wood_color2) 24%,
+    var(--bg_walnut_wood_color2) 25%, var(--bg_walnut_wood_color1) 25%,
+    var(--bg_walnut_wood_color1) 26%, var(--bg_walnut_wood_color2) 26%,
+    var(--bg_walnut_wood_color2) 49%, var(--bg_walnut_wood_color3) 49%,
+    var(--bg_walnut_wood_color3) 50%, var(--bg_walnut_wood_color2) 50%,
+    var(--bg_walnut_wood_color2) 51%, var(--bg_walnut_wood_color3) 51%,
+    var(--bg_walnut_wood_color3) 74%, var(--bg_walnut_wood_color4) 74%,
+    var(--bg_walnut_wood_color4) 75%, var(--bg_walnut_wood_color3) 75%,
+    var(--bg_walnut_wood_color3) 76%, var(--bg_walnut_wood_color4) 76%);
+}

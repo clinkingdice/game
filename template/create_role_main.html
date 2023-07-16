@@ -1,0 +1,278 @@
+<link rel="stylesheet" href="./css/class_faction_view.css">
+<style>
+  #start_notes, #done_notes {
+    text-align: center;
+  }
+  .create_role_window {
+    width: var(--max_width);
+    height: var(--max_height);
+  }
+  @media (min-width: 1024px) or (min-height: 500px) {
+    .create_role_window {
+      max-width: 890px;
+      max-height: 400px;
+    }
+  }
+  #create_role_step_0 .border_2_in,
+  #create_role_step_5 .border_2_in {
+    gap: 16px;
+  }
+  #create_role_step_3 .create_role_window,
+  #create_role_step_4 .create_role_window {
+    justify-content: space-between;
+    padding: 30px;
+  }
+  #select_city {
+    flex: 1;
+    align-self: stretch;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, 120px);
+    grid-auto-rows: max-content;
+    justify-content: space-between;
+    row-gap: 16px;
+    overflow: auto;
+  }
+  #select_city label {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 30px;
+    align-items: center;
+    gap: 0 4px;
+    cursor: pointer;
+  }
+  #select_city label img {
+    grid-column: 2 span;
+    justify-self: center;
+    height: 80px;
+  }
+  #main .setting_area {
+    padding: 30px;
+  }
+  #create_role_step_1 .setting_area {
+    flex: .14 0 280px;
+  }
+  #img_view_outer {
+    max-width: 533px;
+    min-width: 240px;
+  }
+  #create_role_step_2 .setting_area {
+    flex: 0 0 280px;
+  }
+  .setting_area_list {
+    flex: 1;
+    align-self: normal;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .setting_area .input, .setting_area .select {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+  #class_faction_view_holder {
+    overflow: auto;
+  }
+  @media (max-height: 345px) {
+    #class_faction_view_holder {
+      justify-content: flex-start;
+    }
+  }
+  @media (max-width: 730px) {
+    #class_faction_view_holder {
+      align-items: flex-start;
+    }
+  }
+  #class_faction_view {
+    min-height: 300px;
+    min-width: 300px;
+  }
+  #img_view_outer {
+    background: var(--img_創角背景);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+    position: relative;
+  }
+  #img_view {
+    position: absolute;
+    bottom: 15%;
+    height: 80%;
+  }
+  #account_setting {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+  #create_role_step_5 .border_2_in {
+    padding: 30px;
+  }
+  #check_content {
+    overflow: auto;
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 8px;
+    max-width: 100%;
+    flex: 1;
+  }
+</style>
+<div id="create_role_step_0" class="border_2">
+  <div class="border_2_title">
+    <span>創建角色</span>
+  </div>
+  <div class="create_role_window border_2_in bg_tv">
+    <div id="start_notes">
+      歡迎<br>
+      選擇開始創角即視為同意創角規則<br>
+      詳細說明見<a class="a" href="/official_website" target="_blank">官網</a>
+    </div>
+    <button class="button" onclick="create_role.page(1)">開始</button>
+  </div>
+</div>
+<div id="create_role_step_1" class="border_2 hidden">
+  <div class="border_2_title">
+    <span>基本</span>
+    <span>第1步　總共4步</span>
+  </div>
+  <div class="create_role_window border_2_in_plural bg_tv">
+    <div class="setting_area border_in">
+      <div class="setting_area_list">
+        <input class="input" id="name" placeholder="名字"/>
+        <select required class="select" id="race">
+          <option value="" selected>種族</option>
+          <option value="人類-塵埃">人族 - 塵埃</option>
+          <option value="人類-灰燼">人族 - 灰燼</option>
+          <option value="械族-蟻型">械族 - 蟻型</option>
+          <option value="械族-蛛型">械族 - 蛛型</option>
+          <option value="械族-蠍型">械族 - 蠍型</option>
+          <option value="角族-羊角">角族 - 羊角</option>
+          <option value="角族-牛角">角族 - 牛角</option>
+          <option value="角族-鹿角">角族 - 鹿角</option>
+          <option value="海族-有角">海族 - 有角</option>
+          <option value="海族-無角">海族 - 無角</option>
+          <option value="萬族">萬族</option>
+        </select>
+        <input class="input" id="img" placeholder="圖片網址"/>
+        <error id="img_err"></error>
+      </div>
+      <!-- <button class="button" onclick="create_role.page(2)">下一步</button> -->
+      <div class="btn_row">
+        <button class="button" onclick="create_role.page(0)">上一步</button>
+        <button class="button" onclick="create_role.page(2)">下一步</button>
+      </div>
+    </div>
+    <div id="img_view_outer" class="border_in">
+      <img id="img_view"/>
+    </div>
+  </div>
+</div>
+<div id="create_role_step_2" class="border_2 hidden">
+  <div class="border_2_title">
+    <span>職業</span>
+    <span>第2步　總共4步</span>
+  </div>
+  <div class="create_role_window border_2_in_plural bg_tv">
+    <div class="setting_area border_in">
+      <div class="setting_area_list">
+        <select required class="select" id="class_faction">
+          <option value="" data-val="-1" selected placeholder>系別</option>
+          <option value="魔法" data-val="0">魔法</option>
+          <option value="侵蝕" data-val="2">侵蝕</option>
+          <option value="刺客" data-val="4">刺客</option>
+          <option value="戰士" data-val="6">戰士</option>
+          <option value="坦克" data-val="8">坦克</option>
+          <option value="自然" data-val="10">自然</option>
+          <option value="魔法-侵蝕" data-val="1">魔法-侵蝕</option>
+          <option value="侵蝕-刺客" data-val="3">侵蝕-刺客</option>
+          <option value="刺客-戰士" data-val="5">刺客-戰士</option>
+          <option value="戰士-坦克" data-val="7">戰士-坦克</option>
+          <option value="坦克-自然" data-val="9">坦克-自然</option>
+          <option value="自然-魔法" data-val="11">自然-魔法</option>
+        </select>
+        <select required class="select" id="role_class">
+          <option value="" selected placeholder>職業</option>
+        </select>
+        <select required class="select" id="arms">
+          <option value="" selected placeholder>初始裝備</option>
+        </select>
+        <select required class="select" id="handedness">
+          <option value=""  placeholder>慣用手</option>
+          <option value="右手">右手</option>
+          <option value="左手">左手</option>
+        </select>
+      </div>
+      <div class="btn_row">
+        <button class="button" onclick="create_role.page(1)">上一步</button>
+        <button class="button" onclick="create_role.page(3)">下一步</button>
+      </div>
+    </div>
+    <div id="class_faction_view_holder" class="border_in">
+      <div id="class_faction_view" class="filter_border">
+        <div>魔法<span>0</span></div><div><span>0</span></div>
+        <div>侵蝕<span>0</span></div><div><span>0</span></div>
+        <div>刺客<span>0</span></div><div><span>0</span></div>
+        <div>戰士<span>0</span></div><div><span>0</span></div>
+        <div>坦克<span>0</span></div><div><span>0</span></div>
+        <div>自然<span>0</span></div><div><span>0</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="create_role_step_3" class="border_2 hidden">
+  <div class="border_2_title">
+    <span>起始城市</span>
+    <span>第3步　總共4步</span>
+  </div>
+  <div class="create_role_window border_2_in bg_tv">
+    <div id="select_city"></div>
+    <div class="btn_row">
+      <button class="button" onclick="create_role.page(2)">上一步</button>
+      <button class="button" onclick="create_role.page(4)">下一步</button>
+    </div>
+  </div>
+</div>
+<div id="create_role_step_4" class="border_2 hidden">
+  <div class="border_2_title">
+    <span>設定帳號</span>
+    <span>第4步　總共4步</span>
+  </div>
+  <div class="create_role_window border_2_in bg_tv">
+    <div id="account_setting">
+      <input class="input" id="account" placeholder="帳號"/>
+      <input class="input" id="password" type="password" placeholder="密碼"/>
+      <input class="input" id="plurk_url" placeholder="河道網址"/>
+      <error id="plurk_url_err"></error>
+    </div>
+    <div class="btn_row">
+      <button class="button" onclick="create_role.page(3)">上一步</button>
+      <button class="button" onclick="create_role.page(5)">前往確認</button>
+    </div>
+  </div>
+</div>
+<div id="create_role_step_5" class="border_2 hidden">
+  <div class="border_2_title">確認資料</div>
+  <div class="create_role_window border_2_in bg_tv">
+    <div id="check_content">未填寫</div>
+    <div class="btn_row">
+      <button class="button" onclick="create_role.page(4)">上一步</button>
+      <button class="button" id="submit_btn" onclick="create_role.submit()" disabled>確認送出</button>
+    </div>
+  </div>
+</div>
+<div id="create_role_step_submit" class="border_2 hidden">
+  <div class="border_2_title">提交</div>
+  <div class="create_role_window border_2_in bg_tv">
+    資料送出中，勿關閉視窗
+  </div>
+</div>
+<div id="create_role_step_done" class="border_2 hidden">
+  <div class="border_2_title">提交</div>
+  <div class="create_role_window border_1_in bg_tv">
+    <div id="done_notes">
+      已送出資料<br>
+      <a class="a" href="/official_website">回到官網</a>
+    </div>
+  </div>
+</div>
