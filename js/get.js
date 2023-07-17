@@ -1,25 +1,30 @@
 class get {
-  static url = "./";
-  static template(name, done_function) {
-    get._send("template/" + name + ".html", {}, done_function);
+  static async template(name) {
+    return await get._send("./template/" + name + ".html", {});
   }
-  static _send(path = "", form = {}, done_function) {
+  static async _send(url, form = {}) {
     if(!window.XMLHttpRequest) { alert('無法連線，請更換瀏覽器'); return; }
-    if(!get.url) { alert('未設定url'); return; }
-    let form_url = get.url + path;
+    if(!url) { alert('未設定url'); return; }
     let form_str = Object.entries(form).map(({key, val}) => {
       return key + "=" + encodeURI(val);
     }).join("&");
-    if(form_str) form_url += "?" + form_str;
+    if(form_str) url += "?" + form_str;
     let xhr = new XMLHttpRequest();
-    xhr.open("GET", form_url, true);
-    xhr.addEventListener('load', () => {
-      if(xhr.readyState == 4 && xhr.status == 200){
-        if(typeof done_function == "function") {
-          done_function(xhr.responseText);
+    xhr.open("GET", url, true);
+    return new Promise((resolve, reject) => {
+      xhr.addEventListener('load', () => {
+        if(xhr.readyState != 4) return;
+        if(xhr.status == 200){
+          resolve(xhr.responseText);
         }
-      }
+        else {
+          reject('連線失敗: ' + xhr.status);
+        }
+      });
+      xhr.addEventListener('error', (err) => {
+        reject(err);
+      });
+      xhr.send();
     });
-    xhr.send();
   }
 }
