@@ -1,9 +1,18 @@
 class post {
   static google_sheet_url = "https://script.google.com/macros/s/AKfycbyuJRRfBauGecGZaQ8zePEy2_H335lvUUUMFaQkhMQLJUjTu1xCbvS9_vNIZRLnKRT9/exec";
+  static server_url = location.hostname == 'localhost' ? "http://localhost:3000" : "";
   static async create_role(form) {
-    await post._send({
+    return await post._send({
       url: post.google_sheet_url,
       action: "API_create_role",
+    }, form);
+  }
+  static async login(form) {
+    console.log(post.server_url);
+    if(!post.server_url) throw new Error("連線錯誤");
+    return await post._send({
+      url: post.server_url,
+      path: "/login",
     }, form);
   }
   static async _send({url = "", path = "", action}, form) {
@@ -18,8 +27,9 @@ class post {
         if(xhr.readyState != 4) return;
         if(xhr.status == 200){
           try {
-            let data = JSON.parse(xhr.responseText);
-            resolve(data);
+            let data = JSON.parse(xhr.response);
+            if(data.status == "success") resolve(data.data);
+            else reject(data);
           } catch (err) {
             reject(err);
           }
@@ -28,9 +38,9 @@ class post {
           reject('連線失敗: ' + xhr.status);
         }
       }
-      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
       let content = JSON.stringify(form);
-      xhr.send("content=" + encodeURI(content));
+      xhr.send(content);
     });
   }
 }

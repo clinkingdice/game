@@ -1,15 +1,33 @@
 <style>
-  #login {
+  .border_2_in {
     width: 360px;
     height: 240px;
-    gap: 32px;
+    gap: 16px;
+  }
+  #error_msg {
+    height: 22px;
   }
 </style>
-<div class="border_2">
+<div id="login_form" class="border_2">
   <div class="border_2_title">登入</div>
-  <div id="login" class="border_2_in bg_tv">
-    <input class="input" id="account" placeholder="帳號"/>
-    <input class="input" id="password" type="password" placeholder="密碼"/>
-    <button class="button">登入</button>
+  <div class="border_2_in bg_tv">
+    <input class="input" id="account" placeholder="帳號" Einput="login_oninput()"/>
+    <input class="input" id="password" type="password" placeholder="密碼" Einput="login_oninput()"/>
+    <div id="error_msg"></div>
+    <button class="button" Eclick="login_onclick()">登入</button>
+  </div>
+</div>
+
+<div id="login_submit" class="border_2 hidden">
+  <div class="border_2_title">登入</div>
+  <div class="border_2_in bg_tv">
+    登入中
+  </div>
+</div>
+
+<div id="login_connect" class="border_2 hidden">
+  <div class="border_2_title">登入</div>
+  <div class="border_2_in bg_tv">
+    連線中
   </div>
 </div>
