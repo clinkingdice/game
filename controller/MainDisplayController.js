@@ -1,4 +1,5 @@
 import Viewtor from './Viewtor.js';
+import SceneViewtor from './SceneViewtor.js';
 
 export default class MainDisplayController {};
 MainDisplayController.view = Viewtor.view;
@@ -6,17 +7,23 @@ MainDisplayController._eval = (func, $event, $this) => eval(func);
 
 MainDisplayController.main_display = main_display;
 async function main_display(TD) {
-  if(TD.status != "success") return find('#main').innerHTML = TD.msg || "錯誤";
+  if(TD.status != "success") return error_html(TD.msg);
   await this.view('#main', 'main');
-  let {scene} = TD.data;
-  find("#location").innerHTML = scene.name.split('>').map(name => (
-    `<div>${name}</div>`
-  )).join("");
-  find("#scene").setAttribute('scene-id', scene.id);
-  find("#scene_css").href = "./css/scene/" + scene.id + ".css";
+  SceneViewtor.init();
+  SceneViewtor.change_scene(TD.data);
 }
 
-function scene_css_onload() {
-  console.log('scene_css_onload');
-  //找看看有沒有在位置上，有的話就滾動
+function error_html(msg) {
+find('#main').innerHTML =
+`<style>
+  #html_error .border_1_in {
+    padding: 20px;
+  }
+</style>
+<div id="html_error" class="border_1 thin walnut_wood">
+  <div class="border_1_in bg_tv">
+    ${msg || "場景讀取錯誤"}
+  </div>
+</div>`;
+return null;
 }

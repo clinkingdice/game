@@ -8,7 +8,7 @@ async function view(target, file_name) {
     target.innerHTML = template_html || "";
   }
   catch (err) {
-    find("#main").innerHTML = error_html;
+    error_html();
     return;
   }
   find_all('[Eclick]').forEach(el => {
@@ -33,7 +33,8 @@ async function view(target, file_name) {
   });
 }
 
-let error_html =
+function error_html() {
+find("#main").innerHTML =
 `<style>
   #html_error .border_1_in {
     padding: 20px;
@@ -41,6 +42,7 @@ let error_html =
 </style>
 <div id="html_error" class="border_1 thin walnut_wood">
   <div class="border_1_in bg_tv">
-    畫面顯示錯誤
+    頁面顯示錯誤
   </div>
 </div>`;
+}

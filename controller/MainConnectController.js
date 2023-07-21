@@ -22,8 +22,23 @@ function connect(new_token) {
     }
     catch (err) {
       console.log(err);
+      error_html();
     }
   };
+}
+
+function error_html(msg) {
+find('#main').innerHTML =
+`<style>
+  #html_error .border_1_in {
+    padding: 20px;
+  }
+</style>
+<div id="html_error" class="border_1 thin walnut_wood">
+  <div class="border_1_in bg_tv">
+    ${msg || "回傳的資料解析錯誤"}
+  </div>
+</div>`;
 }
 
 function ws_onopen() {

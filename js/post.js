@@ -8,7 +8,6 @@ class post {
     }, form);
   }
   static async login(form) {
-    console.log(post.server_url);
     if(!post.server_url) throw new Error("連線錯誤");
     return await post._send({
       url: post.server_url,

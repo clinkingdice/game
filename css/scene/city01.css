@@ -2,13 +2,14 @@
   content: url(https://images.plurk.com/1ianZ3SPEyPmxdEzhSV3z2.png);
 }
 
-#scene[scene-id="city01"] .role_seat:nth-child(n + 3) {
-  display: none;
-}
 #scene[scene-id="city01"] .role_seat:nth-child(1) {
   top: 500px;
   left: 720px;
 }
 #scene[scene-id="city01"] .role_seat:nth-child(2) {
-  
+  top: 500px;
+  left: 420px;
+}
+#scene[scene-id="city01"] .role_seat:nth-child(n + 3) {
+  display: none;
 }

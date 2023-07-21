@@ -1,4 +1,5 @@
 import Viewtor from './Viewtor.js';
+import GameController from './GameController.js';
 import MainConnectController from './MainConnectController.js';
 import ApiController from './ApiController.js';
 
@@ -29,6 +30,7 @@ function login_onclick() {
   .then(res => {
     page('connect');
     MainConnectController.connect(res.token);
+    GameController.set_rid(res.rid);
   })
   .catch(err => {
     page('form');
@@ -44,6 +46,7 @@ function login_onclick() {
 LoginController.connect_result = connect_result;
 function connect_result(TD) {
   if(TD.status == "success") {
+    page('loading');
     ApiController.main_display();
   }
   else {
