@@ -5,10 +5,17 @@ export default class ShowRoleViewtor {};
 /* ================================ */
 
 ShowRoleViewtor.create = create;
-function create({rid, name, img}) {
+function create({rid, name, img, tags}) {
   return new_el("div.show_role", [
+    create_tag_row(tags),
+    new_el('div.show_role_name', name),
     create_img(img),
   ]);
+}
+
+function create_tag_row(tags) {
+  new_el("div.show_role_tags");
+  return null;
 }
 
 function create_img(src) {

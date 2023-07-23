@@ -1,7 +1,8 @@
+import API from '../js/API.js';
 import Viewtor from './Viewtor.js';
 import GameController from './GameController.js';
 import MainConnectController from './MainConnectController.js';
-import ApiController from './ApiController.js';
+import MainDisplayController from './MainDisplayController.js';
 
 export default class LoginController {};
 LoginController.view = Viewtor.view;
@@ -26,7 +27,7 @@ function login_onclick() {
   if(!account) return find("#error_msg").innerText = "帳號未填寫";
   if(!password) return find("#error_msg").innerText = "密碼未填寫";
   page('submit');
-  post.login({account, password})
+  API.login(account, password)
   .then(res => {
     page('connect');
     MainConnectController.connect(res.token);
@@ -47,7 +48,7 @@ LoginController.connect_result = connect_result;
 function connect_result(TD) {
   if(TD.status == "success") {
     page('loading');
-    ApiController.main_display();
+    MainDisplayController.main_display();
   }
   else {
     page('form');

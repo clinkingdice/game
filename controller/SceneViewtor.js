@@ -88,6 +88,7 @@ function role_seat_list_display() {
 /* ================================ */
 
 function in_seat_player_display(players) {
+  console.log(players);
   players.forEach(player => {
     let seat_el = find_all(seat_list_el, '.role_seat')[player.scene_seat];
     if(!seat_el) return;

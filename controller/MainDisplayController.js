@@ -1,16 +1,21 @@
-import Viewtor from './Viewtor.js';
-import SceneViewtor from './SceneViewtor.js';
+import API from '../js/API.js';
+import SceneDisplayController from './SceneDisplayController.js';
 
 export default class MainDisplayController {};
-MainDisplayController.view = Viewtor.view;
-MainDisplayController._eval = (func, $event, $this) => eval(func);
 
 MainDisplayController.main_display = main_display;
 async function main_display(TD) {
-  if(TD.status != "success") return error_html(TD.msg);
-  await this.view('#main', 'main');
-  SceneViewtor.init();
-  SceneViewtor.change_scene(TD.data);
+  find("#main").innerHTML = "";
+  API.get_display_type()
+  .then(res => {
+    switch(res.display_type) {
+      case "scene": SceneDisplayController.display(); break;
+      default: error_html("不存在的顯示類型");
+    }
+  })
+  .catch(err => {
+    error_html();
+  });
 }
 
 function error_html(msg) {
@@ -22,8 +27,7 @@ find('#main').innerHTML =
 </style>
 <div id="html_error" class="border_1 thin walnut_wood">
   <div class="border_1_in bg_tv">
-    ${msg || "場景讀取錯誤"}
+    ${msg || "取得顯示類型錯誤"}
   </div>
 </div>`;
-return null;
 }

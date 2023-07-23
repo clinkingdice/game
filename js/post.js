@@ -7,13 +7,6 @@ class post {
       action: "API_create_role",
     }, form);
   }
-  static async login(form) {
-    if(!post.server_url) throw new Error("連線錯誤");
-    return await post._send({
-      url: post.server_url,
-      path: "/login",
-    }, form);
-  }
   static async _send({url = "", path = "", action}, form) {
     if(!window.XMLHttpRequest) { alert('無法連線，請更換瀏覽器'); return; }
     form = JSON.parse(JSON.stringify(form));

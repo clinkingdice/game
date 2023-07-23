@@ -1,6 +1,6 @@
+import WsAPI from './WsAPI.js';
 import Viewtor from './Viewtor.js';
 import MsgController from './MsgController.js';
-import ApiController from './ApiController.js';
 
 export default class MainConnectController {};
 MainConnectController.view = Viewtor.view;
@@ -27,6 +27,11 @@ function connect(new_token) {
   };
 }
 
+MainConnectController.get_token = get_token;
+function get_token() {
+  return token;
+}
+
 function error_html(msg) {
 find('#main').innerHTML =
 `<style>
@@ -43,7 +48,7 @@ find('#main').innerHTML =
 
 function ws_onopen() {
   console.log('open connection');
-  ApiController.open();
+  WsAPI.open();
 }
 
 function ws_onclose() {
